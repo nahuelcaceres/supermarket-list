@@ -3,11 +3,12 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
+import { Provider as GroceryProvider} from "./grocery/context";
 
 ReactDOM.render(
-  <React.StrictMode>
+  <GroceryProvider>
     <App />
-  </React.StrictMode>,
+  </GroceryProvider>,
   document.getElementById('root')
 );
 

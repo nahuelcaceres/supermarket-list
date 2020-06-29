@@ -1,25 +1,30 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+
+import {useGroceries, useGroceriesActions} from './grocery/hooks';
+import AddGrocery from './grocery/components/AddGrocery';
 
 function App() {
+  const [showModal, setShowModal] = React.useState(false);
+  const groceries = useGroceries();
+  const {remove} = useGroceriesActions();
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <div>
+        <h1>Lista de supermercado</h1>
+        <button onClick={() => setShowModal(true)}>Agregar</button>
+        
+        <ul>
+          {groceries.map(({id, text}) => (
+            <li key={id}>
+              {text} <button onClick={() => remove(id)}>Borrar</button>
+            </li>
+          ))}
+        </ul>
+
+      </div>
+      {showModal && <AddGrocery onClose={() => setShowModal(false)}/>}
+    </>
   );
 }
 
