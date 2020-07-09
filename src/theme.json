@@ -1,0 +1,7 @@
+{
+    "colors": {
+        "primary": "cornflowerblue",
+        "tertiary": "lightskyblue",
+        "error": "tomato"  
+    }
+}

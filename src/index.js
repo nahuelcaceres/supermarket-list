@@ -4,11 +4,17 @@ import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 import { Provider as GroceryProvider} from "./grocery/context";
+import {ThemeProvider} from "styled-components";
+import theme from "./theme.json";
 
 ReactDOM.render(
-  <GroceryProvider>
+
+  <ThemeProvider theme={theme}>
+    <GroceryProvider>
     <App />
-  </GroceryProvider>,
+  </GroceryProvider>
+  </ThemeProvider>
+  ,
   document.getElementById('root')
 );
 
